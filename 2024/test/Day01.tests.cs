@@ -35,8 +35,30 @@ public class Day01Tests
         var actualInput = GetPuzzleInput();
 
         var actualResult = Day01.distance(actualInput);
-        Console.WriteLine("The Actual Result is: " + actualResult);
+
         actualResult.Should().Be(1110981);
+    }
+
+    [TestMethod]
+    public void ShouldReturnSimilarityOf31ForTheGivenExampleInput()
+    {
+        var firstList = new int[] {3, 4, 2, 1, 3, 3};
+        var secondList = new int[] {4, 3, 5, 3, 9, 3};
+
+        var expectedResult = 31;
+
+        var actualResult = Day01.similarity(firstList, secondList);
+
+        actualResult.Should().Be(expectedResult);
+    }
+
+    [TestMethod]
+    public void ShouldReturnCorrectResultForActualInputForPart2() {
+        var actualInput = GetPuzzleInput();
+
+        var actualResult = Day01.similarity(actualInput);
+
+        actualResult.Should().Be(24869388);
     }
 
     private string GetPuzzleInput() {
