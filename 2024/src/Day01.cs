@@ -22,7 +22,7 @@ namespace src
 
             var lines = input.Split("\n").Select(l => l.Trim());
 
-            System.Console.WriteLine("lines : " + lines);
+            // System.Console.WriteLine("lines : " + lines);
             foreach (var line in lines) {
                 string[] parts = line.Split("   ");
                 x.Add(Int32.Parse(parts[0].Trim()));
