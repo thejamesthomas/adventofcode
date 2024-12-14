@@ -73,7 +73,101 @@ namespace test
         [TestMethod]
         public void CountSafe_ShouldReturnCorrectResultForActualInput()
         {
-            Day02.CountSafe(GetInput()).Should().Be(0);
+            Day02.CountSafe(GetInput()).Should().Be(356);
+        }
+        
+        
+        [TestMethod]
+        public void IsSafeDampened_ShouldReturnTrueForSimpleIncreaseOf1Or2()
+        {
+            const string input = "7 6 4 2 1";
+
+            Day02.IsSafeDampened(input).Should().BeTrue();
+        }
+
+        [TestMethod]
+        public void IsSafeDampened_ShouldReturnFalseWhenAnIncreaseOf5IsInInput()
+        {
+            const string input = "1 2 7 8 9";
+
+            Day02.IsSafeDampened(input).Should().BeFalse();
+        }
+
+        [TestMethod]
+        public void IsSafeDampened_ShouldReturnFalseWhenADecreaseOf4IsInInput()
+        {
+            const string input = "9 7 6 2 1";
+
+            Day02.IsSafeDampened(input).Should().BeFalse();
+        }
+
+        [TestMethod]
+        public void IsSafeDampened_ShouldReturnTrueWhenADecreaseFollowsAnIncrease()
+        {
+            const string input = "1 3 2 4 5";
+
+            Day02.IsSafeDampened(input).Should().BeTrue();
+        }
+
+        [TestMethod]
+        public void IsSafeDampened_ShouldReturnTrueWhenInputContainsNoIncrease()
+        {
+            const string input = "8 6 4 4 1";
+
+            Day02.IsSafeDampened(input).Should().BeTrue();
+        }
+
+        [TestMethod]
+        public void IsSafeDampened_ShouldReturnTrueWhenInputIsSafe()
+        {
+            const string input = "1 3 6 7 9";
+
+            Day02.IsSafeDampened(input).Should().BeTrue();
+        }
+
+        [TestMethod]
+        public void IsSafeDampened_ShouldReturnFalseBlahBlahDampener()
+        {
+            // const string input = "6 2 1 4 1";
+            const string input = "65 61 60 59 58 57 58 54";
+
+            Day02.IsSafeDampened(input).Should().BeFalse();
+        }
+
+        [TestMethod]
+        public void IsSafeDampened_ShouldReturnTrueBlahBlahDampener()
+        {
+            // It should remove the 35 on the end
+            const string input = "25 26 29 30 32 35 37 35";
+
+            Day02.IsSafeDampened(input).Should().BeTrue();
+        }
+
+        [TestMethod]
+        public void CountSafeDampened_ShouldReturnFourForTheExampleInput()
+        {
+            const string input = """
+                                 7 6 4 2 1
+                                 1 2 7 8 9
+                                 9 7 6 2 1
+                                 1 3 2 4 5
+                                 8 6 4 4 1
+                                 1 3 6 7 9
+                                 """;
+            
+            Day02.CountSafeDampened(input, true).Should().Be(4);
+        }
+
+        [TestMethod]
+        public void CountSafeDampened_ShouldReturnCorrectResult()
+        {
+            Day02.CountSafeDampened(GetInput(), true).Should().Be(413);
+        }
+
+        [TestMethod]
+        public void RemoveBadReading_ShouldRemoveTheCorrectBadReading()
+        {
+            Day02.RemoveBadReading("1 3 2 4 5", 1).Should().Be("1 2 4 5");
         }
 
         public string GetInput()
