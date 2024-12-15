@@ -32,6 +32,19 @@ public class Day03Tests
         Day03.Process(GetInput()).Should().Be(165225049);
     }
 
+    [TestMethod]
+    public void ProcessWithConditions_ShouldReturnCorrectResultForExampleInput()
+    {
+        var exampleInput = "xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))";
+        Day03.ProcessWithConditions(exampleInput).Should().Be(48);
+    }
+
+    [TestMethod]
+    public void ProcessWithConditions_ShouldReturnCorrectResultForGivenInput()
+    {
+        Day03.ProcessWithConditions(GetInput()).Should().Be(108830766);
+    }
+
     private string GetInput()
     {
         return """
